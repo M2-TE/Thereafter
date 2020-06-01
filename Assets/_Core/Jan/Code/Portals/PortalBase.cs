@@ -2,5 +2,5 @@
 
 public class PortalBase : MonoBehaviour
 {
-    [SerializeField] private PortalBase m_Pair;
+    [SerializeField] protected PortalBase m_Pair;
 }
