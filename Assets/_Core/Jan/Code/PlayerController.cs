@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SpatialTracking;
 using UnityEngine.XR;
+using UnityEngine.XR.Management;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private bool m_IsMouseControlled;
     [Header("Trackers and Cams")]
     [SerializeField] private Camera m_CamHMD;
     [SerializeField] private Transform m_EyeLeft;
@@ -24,7 +27,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(XRDevice.isPresent)
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            m_IsMouseControlled = !m_IsMouseControlled;
+        }
+
+        if(!m_IsMouseControlled)
         {
             m_CamHMD.GetComponent<TrackedPoseDriver>().enabled = true;
 
