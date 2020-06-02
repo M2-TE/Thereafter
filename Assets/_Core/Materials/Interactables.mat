@@ -64,10 +64,12 @@ Material:
     - Vector1_92472748: 0.02
     - Vector1_99820BA8: 0.1
     - Vector1_E5915CA4: 1
+    - _Outline: 1
     m_Colors:
     - Color_18F2AC5E: {r: 1, g: 1, b: 1, a: 0}
     - Color_23C9B10D: {r: 0.04561229, g: 0.14495295, b: 0.38679245, a: 0}
     - Color_443AC141: {r: 6.062866, g: 0, b: 4.275638, a: 0}
     - Color_68E55607: {r: 1, g: 1, b: 1, a: 0}
     - Color_A2AAE5B5: {r: 0.11372546, g: 0.62745106, b: 0.8352941, a: 0}
+    - Color_EA7ABCF4: {r: 1, g: 0.10015071, b: 0, a: 0}
     - Vector2_C848BFFB: {r: 0.25, g: 0.25, b: 0, a: 0}
