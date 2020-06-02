@@ -14,8 +14,6 @@ public class PortalMain : PortalBase
     [SerializeField] private Camera m_EyeRight;
     private Camera m_MainCam;
 
-    // testing
-
     //
 
     [Header("Cam Stuff - TODO")]
@@ -27,13 +25,13 @@ public class PortalMain : PortalBase
 
     private void OnEnable()
     {
-        RenderPipelineManager.beginCameraRendering += DoStuff;
+        RenderPipelineManager.beginCameraRendering += OnBeginCameraRender;
         Application.onBeforeRender += OnBeforeRender;
     }
 
     private void OnDisable()
     {
-        RenderPipelineManager.beginCameraRendering -= DoStuff;
+        RenderPipelineManager.beginCameraRendering -= OnBeginCameraRender;
         Application.onBeforeRender -= OnBeforeRender;
     }
 
@@ -46,6 +44,9 @@ public class PortalMain : PortalBase
 
     private void OnBeforeRender()
     {
+        // render cams manually
+        Debug.Log("rendering " + Time.time);
+        m_EyeDist = m_MainCam.stereoSeparation;
         RenderLeft();
         RenderRight();
 
@@ -58,16 +59,17 @@ public class PortalMain : PortalBase
         {
             m_EyeLeft.projectionMatrix = m_MainCam.projectionMatrix;
 
-            var relativePosition = transform.InverseTransformPoint(m_MainCam.transform.position);
-            relativePosition = Vector3.Scale(relativePosition, new Vector3(-1, 1, -1));
-            m_EyeLeft.transform.position = m_Pair.transform.TransformPoint(relativePosition);
+            MirrorPosition(m_MainCam.transform, m_EyeLeft.transform);
+            //var relativePosition = transform.InverseTransformPoint(m_MainCam.transform.position);
+            //relativePosition = Vector3.Scale(relativePosition, new Vector3(-1, 1, -1));
+            //m_EyeLeft.transform.position = m_Pair.transform.TransformPoint(relativePosition);
 
+            MirrorRotation(m_MainCam.transform, m_EyeLeft.transform);
+            //var relativeRotation = transform.InverseTransformDirection(m_MainCam.transform.forward);
+            //relativeRotation = Vector3.Scale(relativeRotation, new Vector3(-1, 1, -1));
+            //m_EyeLeft.transform.forward = m_Pair.transform.TransformDirection(relativeRotation);
 
-            var relativeRotation = transform.InverseTransformDirection(m_MainCam.transform.forward);
-            relativeRotation = Vector3.Scale(relativeRotation, new Vector3(-1, 1, -1));
-            m_EyeLeft.transform.forward = m_Pair.transform.TransformDirection(relativeRotation);
-
-            m_EyeLeft.transform.Rotate(new Vector3(0f, 0f, m_MainCam.transform.rotation.eulerAngles.z));
+            //m_EyeLeft.transform.Rotate(new Vector3(0f, 0f, m_MainCam.transform.rotation.eulerAngles.z));
             m_EyeLeft.transform.Translate(new Vector3(-m_EyeDist * .5f, 0f, 0f), Space.Self);
         }
 
@@ -81,13 +83,15 @@ public class PortalMain : PortalBase
         {
             m_EyeRight.projectionMatrix = m_MainCam.GetStereoNonJitteredProjectionMatrix(Camera.StereoscopicEye.Right);
 
-            var relativePosition = transform.InverseTransformPoint(m_MainCam.transform.position);
-            relativePosition = Vector3.Scale(relativePosition, new Vector3(-1, 1, -1));
-            m_EyeRight.transform.position = m_Pair.transform.TransformPoint(relativePosition);
+            MirrorPosition(m_MainCam.transform, m_EyeRight.transform);
+            //var relativePosition = transform.InverseTransformPoint(m_MainCam.transform.position);
+            //relativePosition = Vector3.Scale(relativePosition, new Vector3(-1, 1, -1));
+            //m_EyeRight.transform.position = m_Pair.transform.TransformPoint(relativePosition);
 
-            var relativeRotation = transform.InverseTransformDirection(m_MainCam.transform.forward);
-            relativeRotation = Vector3.Scale(relativeRotation, new Vector3(-1, 1, -1));
-            m_EyeRight.transform.forward = m_Pair.transform.TransformDirection(relativeRotation);
+            MirrorRotation(m_MainCam.transform, m_EyeRight.transform);
+            //var relativeRotation = transform.InverseTransformDirection(m_MainCam.transform.forward);
+            //relativeRotation = Vector3.Scale(relativeRotation, new Vector3(-1, 1, -1));
+            //m_EyeRight.transform.forward = m_Pair.transform.TransformDirection(relativeRotation);
 
             m_EyeRight.transform.Rotate(new Vector3(0f, 0f, m_MainCam.transform.rotation.eulerAngles.z));
             m_EyeRight.transform.Translate(new Vector3(m_EyeDist * .5f, 0f, 0f), Space.Self);
@@ -97,7 +101,7 @@ public class PortalMain : PortalBase
         m_EyeRight.Render();
     }
 
-    private void DoStuff(ScriptableRenderContext ctx, Camera cam)
+    private void OnBeginCameraRender(ScriptableRenderContext ctx, Camera cam)
     {
         switch (cam.stereoTargetEye)
         {
