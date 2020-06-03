@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2400523321301126676}
   - component: {fileID: 2400523321301126675}
   - component: {fileID: 2400523321301126674}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EyeRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,8 +53,8 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -104,9 +104,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2400523321423124818}
   - component: {fileID: 2400523321423124819}
-  m_Layer: 0
+  - component: {fileID: 936142260}
+  - component: {fileID: 936142259}
+  m_Layer: 8
   m_Name: PortalPair
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +141,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f85978b029d9546acbee1521961168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_QuadDisplayRight: {fileID: 2400523321301126672}
+  m_QuadDisplayLeft: {fileID: 2400523321728439895}
   m_Pair: {fileID: 2400523321787362291}
+--- !u!54 &936142260
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400523321423124817}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &936142259
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400523321423124817}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2400523321491180734
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +236,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 567
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 4ff2be17d41be6640a946fa4e9c4314a, type: 2}
   m_TargetDisplay: 0
@@ -258,7 +291,7 @@ GameObject:
   - component: {fileID: 2400523321728439883}
   - component: {fileID: 2400523321728439882}
   - component: {fileID: 2400523321728439881}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EyeLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,8 +332,8 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -350,9 +383,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2400523321787362290}
   - component: {fileID: 2400523321787362291}
-  m_Layer: 0
+  - component: {fileID: 468802466}
+  - component: {fileID: 468802465}
+  m_Layer: 8
   m_Name: PortalMain
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,14 +420,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1238bd4fd57ff5c47912097eb0d6c588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_QuadDisplayRight: {fileID: 2400523322528173975}
+  m_QuadDisplayLeft: {fileID: 2400523322147847733}
   m_Pair: {fileID: 2400523321423124819}
-  m_EyeDist: 0.065
   m_RtEyeLeft: {fileID: 8400000, guid: 3689f917e816aa84a88dc5e3c4966eed, type: 2}
   m_RtEyeRight: {fileID: 8400000, guid: 4ff2be17d41be6640a946fa4e9c4314a, type: 2}
   m_EyeLeft: {fileID: 2400523322568652401}
   m_EyeRight: {fileID: 2400523321491180721}
   leftEye: {x: 0, y: 0, z: 1, w: 0.5}
   rightEye: {x: 0, y: 0.5, z: 1, w: 0.5}
+--- !u!54 &468802466
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400523321787362289}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &468802465
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400523321787362289}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2400523321897313709
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2400523321897313697
 Transform:
   m_ObjectHideFlags: 0
@@ -499,7 +564,7 @@ GameObject:
   - component: {fileID: 2400523322147847721}
   - component: {fileID: 2400523322147847720}
   - component: {fileID: 2400523322147847735}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EyeLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,8 +605,8 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -593,7 +658,7 @@ GameObject:
   - component: {fileID: 2400523322528173963}
   - component: {fileID: 2400523322528173962}
   - component: {fileID: 2400523322528173961}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EyeRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,8 +699,8 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -738,7 +803,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 567
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 3689f917e816aa84a88dc5e3c4966eed, type: 2}
   m_TargetDisplay: 0

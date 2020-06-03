@@ -3,19 +3,19 @@
 [DefaultExecutionOrder(-30000)]
 public class Teleportable : MonoBehaviour
 {
-    private GameObject m_copy;
-    private PortalBase m_cachedPortal;
+    protected GameObject m_copy;
+    protected PortalBase m_cachedPortal;
     private void OnEnable()
     {
-        Application.onBeforeRender += UpdateCopy;
+        Application.onBeforeRender += PortalProcedure;
     }
 
     private void OnDisable()
     {
-        Application.onBeforeRender -= UpdateCopy;
+        Application.onBeforeRender -= PortalProcedure;
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         m_copy = new GameObject();
         m_copy.layer = gameObject.layer;
@@ -25,14 +25,9 @@ public class Teleportable : MonoBehaviour
         m_copy.SetActive(false);
     }
 
-    private void Update()
-    {
-        //UpdateCopy();
-    }
 
-    private void UpdateCopy()
+    protected virtual void PortalProcedure()
     {
-        Debug.Log("teleporting " + Time.time);
         if (m_cachedPortal == null) return;
         m_cachedPortal.MirrorPosition(transform, m_copy.transform);
         m_cachedPortal.MirrorRotation(transform, m_copy.transform);

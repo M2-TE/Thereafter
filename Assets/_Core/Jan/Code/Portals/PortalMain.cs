@@ -2,11 +2,12 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.XR;
+using UnityEngine.XR.Management;
+using UnityEngine.XR.Provider;
 
-[DefaultExecutionOrder(30000)]
 public class PortalMain : PortalBase
 {
-    [SerializeField] private float m_EyeDist = .065f;
+    //[SerializeField] private float m_EyeDist = .065f;
     [SerializeField] private RenderTexture m_RtEyeLeft;
     [SerializeField] private RenderTexture m_RtEyeRight;
     [Space]
@@ -44,9 +45,7 @@ public class PortalMain : PortalBase
 
     private void OnBeforeRender()
     {
-        // render cams manually
-        Debug.Log("rendering " + Time.time);
-        m_EyeDist = m_MainCam.stereoSeparation;
+        // render manually
         RenderLeft();
         RenderRight();
 
@@ -69,8 +68,8 @@ public class PortalMain : PortalBase
             //relativeRotation = Vector3.Scale(relativeRotation, new Vector3(-1, 1, -1));
             //m_EyeLeft.transform.forward = m_Pair.transform.TransformDirection(relativeRotation);
 
-            //m_EyeLeft.transform.Rotate(new Vector3(0f, 0f, m_MainCam.transform.rotation.eulerAngles.z));
-            m_EyeLeft.transform.Translate(new Vector3(-m_EyeDist * .5f, 0f, 0f), Space.Self);
+            //m_EyeLeft.transform.Rotate(new Vector3(0f, 0f, -m_MainCam.transform.rotation.eulerAngles.z));
+            m_EyeLeft.transform.Translate(new Vector3(-PlayerController.s_EyeSeperation * .5f, 0f, 0f), Space.Self);
         }
 
         SetActiveShaderEye(Camera.MonoOrStereoscopicEye.Left);
@@ -93,8 +92,8 @@ public class PortalMain : PortalBase
             //relativeRotation = Vector3.Scale(relativeRotation, new Vector3(-1, 1, -1));
             //m_EyeRight.transform.forward = m_Pair.transform.TransformDirection(relativeRotation);
 
-            m_EyeRight.transform.Rotate(new Vector3(0f, 0f, m_MainCam.transform.rotation.eulerAngles.z));
-            m_EyeRight.transform.Translate(new Vector3(m_EyeDist * .5f, 0f, 0f), Space.Self);
+            //m_EyeRight.transform.Rotate(new Vector3(0f, 0f, -m_MainCam.transform.rotation.eulerAngles.z));
+            m_EyeRight.transform.Translate(new Vector3(PlayerController.s_EyeSeperation * .5f, 0f, 0f), Space.Self);
         }
 
         SetActiveShaderEye(Camera.MonoOrStereoscopicEye.Right);
