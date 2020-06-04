@@ -1,9 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.XR;
-using UnityEngine.XR.Management;
-using UnityEngine.XR.Provider;
 
 public class PortalMain : PortalBase
 {
@@ -56,19 +52,10 @@ public class PortalMain : PortalBase
     {
         if(adjustPos)
         {
-            m_EyeLeft.projectionMatrix = m_MainCam.projectionMatrix;
-
             MirrorPosition(m_MainCam.transform, m_EyeLeft.transform);
-            //var relativePosition = transform.InverseTransformPoint(m_MainCam.transform.position);
-            //relativePosition = Vector3.Scale(relativePosition, new Vector3(-1, 1, -1));
-            //m_EyeLeft.transform.position = m_Pair.transform.TransformPoint(relativePosition);
-
             MirrorRotation(m_MainCam.transform, m_EyeLeft.transform);
-            //var relativeRotation = transform.InverseTransformDirection(m_MainCam.transform.forward);
-            //relativeRotation = Vector3.Scale(relativeRotation, new Vector3(-1, 1, -1));
-            //m_EyeLeft.transform.forward = m_Pair.transform.TransformDirection(relativeRotation);
 
-            //m_EyeLeft.transform.Rotate(new Vector3(0f, 0f, -m_MainCam.transform.rotation.eulerAngles.z));
+            m_EyeLeft.projectionMatrix = m_MainCam.projectionMatrix;
             m_EyeLeft.transform.Translate(new Vector3(-PlayerController.s_EyeSeperation * .5f, 0f, 0f), Space.Self);
         }
 
@@ -80,19 +67,10 @@ public class PortalMain : PortalBase
     {
         if (adjustPos)
         {
-            m_EyeRight.projectionMatrix = m_MainCam.GetStereoNonJitteredProjectionMatrix(Camera.StereoscopicEye.Right);
-
             MirrorPosition(m_MainCam.transform, m_EyeRight.transform);
-            //var relativePosition = transform.InverseTransformPoint(m_MainCam.transform.position);
-            //relativePosition = Vector3.Scale(relativePosition, new Vector3(-1, 1, -1));
-            //m_EyeRight.transform.position = m_Pair.transform.TransformPoint(relativePosition);
-
             MirrorRotation(m_MainCam.transform, m_EyeRight.transform);
-            //var relativeRotation = transform.InverseTransformDirection(m_MainCam.transform.forward);
-            //relativeRotation = Vector3.Scale(relativeRotation, new Vector3(-1, 1, -1));
-            //m_EyeRight.transform.forward = m_Pair.transform.TransformDirection(relativeRotation);
 
-            //m_EyeRight.transform.Rotate(new Vector3(0f, 0f, -m_MainCam.transform.rotation.eulerAngles.z));
+            m_EyeRight.projectionMatrix = m_MainCam.GetStereoNonJitteredProjectionMatrix(Camera.StereoscopicEye.Right);
             m_EyeRight.transform.Translate(new Vector3(PlayerController.s_EyeSeperation * .5f, 0f, 0f), Space.Self);
         }
 
