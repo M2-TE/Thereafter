@@ -64,6 +64,7 @@ Material:
     - Vector1_92472748: 0.02
     - Vector1_99820BA8: 0.1
     - Vector1_E5915CA4: 0
+    - _Highlight: 0
     - _Outline: 0
     m_Colors:
     - Color_18F2AC5E: {r: 1, g: 1, b: 1, a: 0}

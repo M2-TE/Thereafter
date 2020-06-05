@@ -40,13 +40,13 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.BooleanShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"75c903ad-56d6-4b5b-8591-9763d93834c5\"\n    },\n    \"m_Name\": \"Outline\",\n    \"m_DefaultReferenceName\": \"Boolean_24282933\",\n    \"m_OverrideReferenceName\": \"_Outline\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": true\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"75c903ad-56d6-4b5b-8591-9763d93834c5\"\n    },\n    \"m_Name\": \"Outline\",\n    \"m_DefaultReferenceName\": \"Boolean_24282933\",\n    \"m_OverrideReferenceName\": \"_Outline\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": false\n}"
         },
         {
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.BooleanShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"65e5fe17-2ab5-431b-a346-ecfe68e036a0\"\n    },\n    \"m_Name\": \"Highlight\",\n    \"m_DefaultReferenceName\": \"Boolean_96F56319\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": true\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"65e5fe17-2ab5-431b-a346-ecfe68e036a0\"\n    },\n    \"m_Name\": \"Highlight\",\n    \"m_DefaultReferenceName\": \"Boolean_96F56319\",\n    \"m_OverrideReferenceName\": \"_Highlight\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": false\n}"
         },
         {
             "typeInfo": {
