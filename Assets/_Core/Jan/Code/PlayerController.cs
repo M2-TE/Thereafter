@@ -77,8 +77,7 @@ public class PlayerController : MonoBehaviour
         var angle = Vector3.Angle(m_CurrentPortal.transform.forward, relVec);
         if (angle < 90f)
         {
-            m_CurrentPortal.MirrorPosition(transform, transform);
-            m_CurrentPortal.MirrorRotation(transform, transform);
+            m_CurrentPortal.Mirror(transform, transform);
 
             foreach(var teleportable in teleportables)
             {

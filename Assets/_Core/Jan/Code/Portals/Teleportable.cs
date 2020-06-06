@@ -30,8 +30,7 @@ public class Teleportable : MonoBehaviour
     protected virtual void PortalProcedure()
     {
         if (m_cachedPortal == null) return;
-        m_cachedPortal.MirrorPosition(transform, m_copy.transform);
-        m_cachedPortal.MirrorRotation(transform, m_copy.transform);
+        m_cachedPortal.Mirror(transform, m_copy.transform);
     }
 
     private void OnTriggerEnter(Collider other)

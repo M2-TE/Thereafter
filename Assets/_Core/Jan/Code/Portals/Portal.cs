@@ -3,33 +3,84 @@
 [DefaultExecutionOrder(0)]
 public class Portal : MonoBehaviour
 {
-    [SerializeField] private GameObject m_QuadDisplayRight;
-    [SerializeField] private GameObject m_QuadDisplayLeft;
-    private GameObject m_QuadCopyRight;
-    private GameObject m_QuadCopyLeft;
-
     public Portal m_Pair;
+    [Header("Prefabs")]
+    [SerializeField] private GameObject m_camPrefab;
+    [SerializeField] private RenderTexture m_renderTexturePrefab;
+    [SerializeField] private GameObject m_portalQuadPrefab;
 
-    /// <summary>
-    /// //////////
-    /// </summary>
-    /// 
+    private Camera m_mainCam;
+    private Camera m_camLeft;
+    private Camera m_camRight;
 
-    [SerializeField] private Camera m_EyeLeft;
-    [SerializeField] private Camera m_EyeRight;
-    private Camera m_MainCam;
+    private GameObject m_quadCopyRight;
+    private GameObject m_quadCopyLeft;
+
+    private void OnEnable()
+    {
+        Application.onBeforeRender += OnBeforeRender;
+    }
+
+    private void OnDisable()
+    {
+        Application.onBeforeRender -= OnBeforeRender;
+    }
 
     private void Awake()
     {
-        m_QuadCopyLeft = Instantiate(m_QuadDisplayLeft, transform);
-        m_QuadCopyRight = Instantiate(m_QuadDisplayRight, transform);
+        // left eye
+        {
+            var go = Instantiate(m_camPrefab, transform);
+            m_camLeft = go.GetComponent<Camera>();
+            m_camLeft.stereoTargetEye = StereoTargetEyeMask.Left;
+            m_camLeft.targetTexture = new RenderTexture(m_renderTexturePrefab);
+
+            var quadLeft = Instantiate(m_portalQuadPrefab, transform);
+            quadLeft.name = "Quad Left";
+            var mat = quadLeft.GetComponent<MeshRenderer>().material;
+            mat.SetTexture("_PortalTexture", m_camLeft.targetTexture);
+            mat.SetFloat("_TargetEye", -1f);
+
+            // create quad copies to smoothen the teleportation visually
+            m_quadCopyLeft = Instantiate(quadLeft, transform);
+            m_quadCopyLeft.name = "Quad Left - Copy";
+        }
+
+        // right eye
+        {
+            var go = Instantiate(m_camPrefab, transform);
+            m_camRight = go.GetComponent<Camera>();
+            m_camRight.stereoTargetEye = StereoTargetEyeMask.Right;
+            m_camRight.targetTexture = new RenderTexture(m_renderTexturePrefab);
+
+            var quadRight = Instantiate(m_portalQuadPrefab, transform);
+            quadRight.name = "Quad Right";
+            var mat = quadRight.GetComponent<MeshRenderer>().material;
+            mat.SetTexture("_PortalTexture", m_camRight.targetTexture);
+            mat.SetFloat("_TargetEye", 1f);
+
+            // create quad copies to smoothen the teleportation visually
+            m_quadCopyRight = Instantiate(quadRight, transform);
+            m_quadCopyRight.name = "Quad Right - Copy";
+        }
+    }
+
+    private void Start()
+    {
+        m_mainCam = Camera.main;
     }
 
     private void Update()
     {
         Vector3 vec = transform.forward * PlayerController.s_EyeSeperation + transform.position;
-        m_QuadCopyLeft.transform.position = vec;
-        m_QuadCopyRight.transform.position = vec;
+        m_quadCopyLeft.transform.position = vec;
+        m_quadCopyRight.transform.position = vec;
+    }
+
+    public void Mirror(Transform original, Transform target)
+    {
+        MirrorPosition(original, target);
+        MirrorRotation(original, target);
     }
 
     public void MirrorPosition(Transform original, Transform target)
@@ -49,24 +100,6 @@ public class Portal : MonoBehaviour
         target.Rotate(new Vector3(0f, 0f, original.rotation.eulerAngles.z));
     }
 
-
-    ////////////////////
-    ///
-    private void OnEnable()
-    {
-        Application.onBeforeRender += OnBeforeRender;
-    }
-
-    private void OnDisable()
-    {
-        Application.onBeforeRender -= OnBeforeRender;
-    }
-
-    private void Start()
-    {
-        m_MainCam = Camera.main;
-    }
-
     private void OnBeforeRender()
     {
         // render manually
@@ -80,29 +113,27 @@ public class Portal : MonoBehaviour
     {
         if (adjustPos)
         {
-            MirrorPosition(m_MainCam.transform, m_EyeLeft.transform);
-            MirrorRotation(m_MainCam.transform, m_EyeLeft.transform);
+            MirrorPosition(m_mainCam.transform, m_camLeft.transform);
+            MirrorRotation(m_mainCam.transform, m_camLeft.transform);
 
-            m_EyeLeft.projectionMatrix = m_MainCam.projectionMatrix;
-            m_EyeLeft.transform.Translate(new Vector3(-PlayerController.s_EyeSeperation * .5f, 0f, 0f), Space.Self);
+            m_camLeft.projectionMatrix = m_mainCam.projectionMatrix;
+            m_camLeft.transform.Translate(new Vector3(-PlayerController.s_EyeSeperation * .5f, 0f, 0f), Space.Self);
         }
 
-        //SetActiveShaderEye(Camera.MonoOrStereoscopicEye.Left);
-        m_EyeLeft.Render();
+        m_camLeft.Render();
     }
 
     private void RenderRight(bool adjustPos = true)
     {
         if (adjustPos)
         {
-            MirrorPosition(m_MainCam.transform, m_EyeRight.transform);
-            MirrorRotation(m_MainCam.transform, m_EyeRight.transform);
+            MirrorPosition(m_mainCam.transform, m_camRight.transform);
+            MirrorRotation(m_mainCam.transform, m_camRight.transform);
 
-            m_EyeRight.projectionMatrix = m_MainCam.GetStereoNonJitteredProjectionMatrix(Camera.StereoscopicEye.Right);
-            m_EyeRight.transform.Translate(new Vector3(PlayerController.s_EyeSeperation * .5f, 0f, 0f), Space.Self);
+            m_camRight.projectionMatrix = m_mainCam.GetStereoNonJitteredProjectionMatrix(Camera.StereoscopicEye.Right);
+            m_camRight.transform.Translate(new Vector3(PlayerController.s_EyeSeperation * .5f, 0f, 0f), Space.Self);
         }
 
-        //SetActiveShaderEye(Camera.MonoOrStereoscopicEye.Right);
-        m_EyeRight.Render();
+        m_camRight.Render();
     }
 }

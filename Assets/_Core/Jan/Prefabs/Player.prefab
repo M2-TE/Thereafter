@@ -535,9 +535,11 @@ MonoBehaviour:
   m_CamHMD: {fileID: 5017183959949525110}
   m_EyeRight: {fileID: 5017183959544866533}
   m_EyeLeft: {fileID: 5017183960633212203}
+  teleportables:
+  - {fileID: 1923510986}
+  - {fileID: 1980352297}
   m_Movespeed: 0.05
   m_MouseLookSpeed: 1
-  m_TeleportAngle: 90
 --- !u!135 &1939187132
 SphereCollider:
   m_ObjectHideFlags: 0
