@@ -11,6 +11,10 @@ public class HandAnimationTrigger : MonoBehaviour
 
     void Update()
     {
+
+
+
+
         if (Input.GetKeyDown(KeyCode.Space)) LeftHand.SetBool("isOpen", false);
         if(Input.GetKeyDown(KeyCode.E)) RightHand.SetBool("isOpen", false);
         if(Input.GetKeyUp(KeyCode.E)) RightHand.SetBool("isOpen", true);
