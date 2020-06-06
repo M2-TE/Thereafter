@@ -17,9 +17,9 @@ public class PortalBase : MonoBehaviour
 
     private void Update()
     {
-        Vector3 vec = transform.forward * PlayerController.s_EyeSeperation;
-        m_QuadCopyLeft.transform.localPosition = vec;
-        m_QuadCopyRight.transform.localPosition = vec;
+        Vector3 vec = transform.forward * PlayerController.s_EyeSeperation + transform.position;
+        m_QuadCopyLeft.transform.position = vec;
+        m_QuadCopyRight.transform.position = vec;
     }
 
     public void MirrorPosition(Transform original, Transform target)

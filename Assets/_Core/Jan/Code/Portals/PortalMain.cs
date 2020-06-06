@@ -3,9 +3,6 @@ using UnityEngine.Rendering;
 
 public class PortalMain : PortalBase
 {
-    //[SerializeField] private float m_EyeDist = .065f;
-    [SerializeField] private RenderTexture m_RtEyeLeft;
-    [SerializeField] private RenderTexture m_RtEyeRight;
     [Space]
     [SerializeField] private Camera m_EyeLeft;
     [SerializeField] private Camera m_EyeRight;
