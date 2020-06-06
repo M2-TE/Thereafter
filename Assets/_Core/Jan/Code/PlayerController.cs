@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SpatialTracking;
 
-[DefaultExecutionOrder(-30000)]
+[DefaultExecutionOrder(-30005)]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private bool m_IsMouseControlled;
@@ -10,15 +9,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Camera m_CamHMD;
     [SerializeField] private Transform m_EyeRight;
     [SerializeField] private Transform m_EyeLeft;
+    [SerializeField] private Teleportable[] teleportables;
 
     [Header("Movement")]
     [SerializeField] private float m_Movespeed = .05f;
     [SerializeField] private float m_MouseLookSpeed = 1f;
-    [SerializeField] private float m_TeleportAngle;
 
     public static float s_EyeSeperation = .05f;
     private Vector3 m_CurrentRotation = Vector3.zero;
-    private PortalBase m_CurrentPortal;
+    private Portal m_CurrentPortal;
 
     private void OnEnable()
     {
@@ -74,21 +73,23 @@ public class PlayerController : MonoBehaviour
     {
         if (m_CurrentPortal == null) return;
 
-
-
         var relVec = m_CamHMD.transform.position - m_CurrentPortal.transform.position;
         var angle = Vector3.Angle(m_CurrentPortal.transform.forward, relVec);
-        if (angle < m_TeleportAngle)
+        if (angle < 90f)
         {
             m_CurrentPortal.MirrorPosition(transform, transform);
             m_CurrentPortal.MirrorRotation(transform, transform);
-            //m_CamHMD.Render();
+
+            foreach(var teleportable in teleportables)
+            {
+                teleportable.m_cachedPortal = m_CurrentPortal.m_Pair;
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        m_CurrentPortal = other.GetComponent<PortalBase>();
+        m_CurrentPortal = other.GetComponent<Portal>();
     }
 
     private void OnTriggerExit(Collider other)
