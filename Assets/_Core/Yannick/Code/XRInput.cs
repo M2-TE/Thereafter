@@ -15,7 +15,7 @@ public class XRInput : MonoBehaviour
 
     private static XRInput instance;
 
-    private InputDevice leftController, rightController, hmd;
+    private InputDevice leftController, rightController;
 
     private void Awake()
     {
@@ -32,7 +32,6 @@ public class XRInput : MonoBehaviour
 
             leftController = device.role == InputDeviceRole.LeftHanded ? device : leftController;
             rightController = device.role == InputDeviceRole.RightHanded ? device : leftController;
-            hmd = device.characteristics == InputDeviceCharacteristics.HeadMounted ? device : hmd;
         }
         SendHapticImpulse(true);
         SendHapticImpulse(false);
@@ -40,7 +39,20 @@ public class XRInput : MonoBehaviour
 
     private void Update()
     {
-        GetButton(true, XRInputButtons.PRIMARY);
+        // Search for correct controller if not yet found
+        if(leftController == null)
+        {
+            List<InputDevice> leftInputs = new List<InputDevice>();
+            InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.Left, leftInputs);
+            if (leftInputs.Count > 0) leftController = leftInputs[0];
+        }
+
+        if (rightController == null)
+        {
+            List<InputDevice> rightInputs = new List<InputDevice>();
+            InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.Right, rightInputs);
+            if (rightInputs.Count > 0) rightController = rightInputs[0];
+        }
     }
 
     public void SendHapticImpulse(bool leftHand, float amplitude = 0.5f, float duration = 1.0f)
@@ -112,8 +124,6 @@ public class XRInput : MonoBehaviour
         if (!leftHand)
             rightController.TryGetFeatureValue(CommonUsages.triggerButton, out output);
 
-        Debug.Log("TRIGGER_PRESS : " + output.ToString());
-
         return output;
     }
 
@@ -127,8 +137,6 @@ public class XRInput : MonoBehaviour
             leftController.TryGetFeatureValue(CommonUsages.gripButton, out output);
         if (!leftHand)
             rightController.TryGetFeatureValue(CommonUsages.gripButton, out output);
-
-        Debug.Log("GRIP_PRESS : " + output.ToString());
 
         return output;
     }
