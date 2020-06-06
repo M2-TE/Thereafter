@@ -545,6 +545,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4161352284291659098}
     m_Modifications:
+    - target: {fileID: 1051036189, guid: 5f077a5fbf090e545952ba698787bfec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051036190, guid: 5f077a5fbf090e545952ba698787bfec, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051036190, guid: 5f077a5fbf090e545952ba698787bfec, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 6753750885059851809, guid: 5f077a5fbf090e545952ba698787bfec,
         type: 3}
       propertyPath: m_Name
