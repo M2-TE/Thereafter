@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-[DefaultExecutionOrder(-30000)]
+[DefaultExecutionOrder(-30004)]
 public class Teleportable : MonoBehaviour
 {
     protected GameObject m_copy;
-    protected PortalBase m_cachedPortal;
+    [NonSerialized] public Portal m_cachedPortal;
     private void OnEnable()
     {
         Application.onBeforeRender += PortalProcedure;
@@ -29,13 +30,12 @@ public class Teleportable : MonoBehaviour
     protected virtual void PortalProcedure()
     {
         if (m_cachedPortal == null) return;
-        m_cachedPortal.MirrorPosition(transform, m_copy.transform);
-        m_cachedPortal.MirrorRotation(transform, m_copy.transform);
+        m_cachedPortal.Mirror(transform, m_copy.transform);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        m_cachedPortal = other.GetComponent<PortalBase>();
+        m_cachedPortal = other.GetComponent<Portal>();
         m_copy.SetActive(true);
     }
 
