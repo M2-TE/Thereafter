@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Portal
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -14,15 +13,9 @@ TagManager:
   - UI
   - 
   - 
-<<<<<<< HEAD
   - Player
-  - Interactable
-  - Interactable Hover
-=======
-  - Portal
-  - Teleportable
+  - HideFromCam
   - 
->>>>>>> dev-jan
   - 
   - 
   - 
