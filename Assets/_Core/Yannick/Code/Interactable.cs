@@ -9,14 +9,6 @@ public class Interactable : MonoBehaviour
     [SerializeField] private bool highlightOnHover = true;
     [SerializeField] private Material highlightMat;
 
-    private MeshRenderer meshRenderer;
-
-    private void Start()
-    {
-        meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.material = highlightMat;
-    }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) highlightMat.SetInt("_Highlight", 1);
