@@ -16,6 +16,7 @@ public class XRInput : MonoBehaviour
     private static XRInput instance;
 
     private InputDevice leftController, rightController;
+    private List<InputDevice> allDevices = new List<InputDevice>();
 
     private void Awake()
     {
@@ -24,34 +25,31 @@ public class XRInput : MonoBehaviour
 
     private void Start()
     {
-        var inputDevices = new List<UnityEngine.XR.InputDevice>();
-        InputDevices.GetDevices(inputDevices);
-        foreach (var device in inputDevices)
-        {
-            Debug.Log(string.Format("Device found with name '{0}' and role '{1}'", device.name, device.characteristics.ToString()));
-
-            leftController = device.role == InputDeviceRole.LeftHanded ? device : leftController;
-            rightController = device.role == InputDeviceRole.RightHanded ? device : leftController;
-        }
-        SendHapticImpulse(true);
-        SendHapticImpulse(false);
+        GetDevices(true, true);
     }
 
     private void Update()
     {
-        // Search for correct controller if not yet found
-        if(leftController == null)
-        {
-            List<InputDevice> leftInputs = new List<InputDevice>();
-            InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.Left, leftInputs);
-            if (leftInputs.Count > 0) leftController = leftInputs[0];
-        }
+        if (!rightController.isValid || !leftController.isValid) GetDevices(!leftController.isValid, !rightController.isValid);
+    }
 
-        if (rightController == null)
+    private void GetDevices(bool missingLeft, bool missingRight)
+    {
+        InputDevices.GetDevices(allDevices);
+        foreach ( var device in allDevices)
         {
-            List<InputDevice> rightInputs = new List<InputDevice>();
-            InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.Right, rightInputs);
-            if (rightInputs.Count > 0) rightController = rightInputs[0];
+            if(missingLeft && device.characteristics.HasFlag(InputDeviceCharacteristics.Left))
+            {
+                leftController = device;
+                Debug.Log(string.Format("Device found with name '{0}' and role '{1}'", device.name, device.characteristics.ToString()));
+                SendHapticImpulse(true);
+            }
+            if(missingRight && device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
+            {
+                rightController = device;
+                Debug.Log(string.Format("Device found with name '{0}' and role '{1}'", device.name, device.characteristics.ToString()));
+                SendHapticImpulse(false);
+            }
         }
     }
 
