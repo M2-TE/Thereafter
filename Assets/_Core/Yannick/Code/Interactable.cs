@@ -3,17 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class Interactable : MonoBehaviour
+public abstract class Interactable : MonoBehaviour
 {
-    [SerializeField][Range(0.2f, 2f)] private float  interactRange = 1f;
-    [SerializeField] private bool highlightOnHover = true;
-    [SerializeField] private Material highlightMat;
+    [Tooltip("References the Renderer automatically if not set here.")]
+    [SerializeField] private Renderer meshRenderer;
 
-    private void Update()
+    public bool OutlineOnHover = true;
+    public bool Scannable = true;
+
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) highlightMat.SetInt("_Highlight", 1);
-        if (Input.GetKeyDown(KeyCode.E)) highlightMat.SetInt("_Outline", 1);
-        if (Input.GetKeyUp(KeyCode.Space)) highlightMat.SetInt("_Highlight", 0);
-        if (Input.GetKeyUp(KeyCode.E)) highlightMat.SetInt("_Outline", 0);
+        if(meshRenderer == null) meshRenderer = GetComponent<Renderer>();
+        meshRenderer.material = new Material(meshRenderer.material);
+    }
+
+    protected virtual void Start()
+    {
+        InteractableManager.Instance.Add(this);
+        gameObject.layer = InteractableManager.Instance.InteractableLayer;
+    }
+
+    public void SetHighlight(bool active)
+    {
+        if(Scannable)
+            meshRenderer.material.SetInt("_Highlight", active ? 1 : 0);
+    }
+
+    public void SetOutline(bool active, bool ignoreOutlineOnHoverBool = false)
+    {
+        if (ignoreOutlineOnHoverBool || OutlineOnHover)
+            meshRenderer.material.SetInt("_Outline", active ? 1 : 0);
+        else 
+            meshRenderer.material.SetInt("_Outline", 0);
     }
 }
