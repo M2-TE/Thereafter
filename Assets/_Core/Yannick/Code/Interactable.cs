@@ -36,4 +36,7 @@ public abstract class Interactable : MonoBehaviour
         else 
             meshRenderer.material.SetInt("_Outline", 0);
     }
+
+    public abstract void EngageInteraction(Hand interactor);
+    public abstract void DisengageInteraction(Hand interactor);
 }
