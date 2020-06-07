@@ -86,8 +86,6 @@ public class XRInput : MonoBehaviour
             output = GetJoystickAxis(leftHand, axis.Equals(XRInputAxis.JOYSTICK_X),rounding);
         }
 
-        Debug.Log(axis.ToString() + " : " + output.ToString());
-
         return output;
     }
 
@@ -169,4 +167,15 @@ public class XRInput : MonoBehaviour
         return output;
     }
 
+    public Vector3 GetControllerVelocity(bool leftHand)
+    {
+        Vector3 velocity;
+
+        if (leftHand)
+            leftController.TryGetFeatureValue(CommonUsages.deviceVelocity, out velocity);
+        else 
+            rightController.TryGetFeatureValue(CommonUsages.deviceVelocity, out velocity);
+
+        return velocity;
+    }
 }

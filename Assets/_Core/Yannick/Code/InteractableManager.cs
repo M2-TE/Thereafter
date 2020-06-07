@@ -8,6 +8,8 @@ public class InteractableManager : MonoBehaviour
 
     private static InteractableManager instance;
 
+    public Transform InteractablesParent;
+
     public int InteractableLayer = 15;
 
     private List<Interactable> allInteractables = new List<Interactable>();
