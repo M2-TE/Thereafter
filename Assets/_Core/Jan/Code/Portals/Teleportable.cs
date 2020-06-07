@@ -21,8 +21,9 @@ public class Teleportable : MonoBehaviour
         m_copy = new GameObject();
         m_copy.layer = gameObject.layer;
         m_copy.name = name + "_portalCopy";
-        m_copy.AddComponent<MeshFilter>().mesh = GetComponent<MeshFilter>().mesh;
-        m_copy.AddComponent<MeshRenderer>().material = GetComponent<MeshRenderer>().material;
+        if(GetComponent<MeshFilter>() != null)
+            m_copy.AddComponent<MeshFilter>().mesh = GetComponent<MeshFilter>().mesh;
+        m_copy.AddComponent<MeshRenderer>().material = GetComponent<Renderer>().material;
         m_copy.SetActive(false);
     }
 
