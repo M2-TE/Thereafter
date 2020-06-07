@@ -16,17 +16,25 @@ public class PickUpInteractable : Interactable
         rbody = GetComponent<Rigidbody>();
     }
 
-    public void PickUp(Transform holder)
+    /// <summary>
+    /// PickUp Event
+    /// </summary>
+    /// <param name="holder">The Hand the interactable will attach itself to.</param>
+    public override void EngageInteraction(Hand holder)
     {
         isPickedUp = true;
         OutlineOnHover = false;
 
-        transform.parent = holder;
+        transform.parent = holder.transform;
 
         rbody.isKinematic = true;
     }
 
-    public void DropDown()
+    /// <summary>
+    /// DropDown Event
+    /// </summary>
+    /// <param name="holder">The Hand the interactable will detach itself from.</param>
+    public override void DisengageInteraction(Hand holder)
     {
         isPickedUp = false;
         OutlineOnHover = true;
