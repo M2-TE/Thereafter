@@ -6,6 +6,7 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
     public Animator handAnimator;
+    public bool Left => leftHand;
 
     [SerializeField]
     private bool openHand, leftHand;
@@ -42,6 +43,7 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //if (reachAble == null && other.GetComponent<Interactable>()) reachAble = other.GetComponent<Interactable>();
         reachAble.SetOutline(false);
         reachAble = null;
     }

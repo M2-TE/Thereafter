@@ -39,8 +39,13 @@ public class PickUpInteractable : Interactable
         isPickedUp = false;
         OutlineOnHover = true;
 
-        transform.parent = null;
+        transform.parent = InteractableManager.Instance.InteractablesParent;
 
         rbody.isKinematic = false;
+
+        Vector3 velocity = XRInput.Instance.GetControllerVelocity(holder.Left);
+
+        // the X and Z Velocity from the controllers are inverted for whatever reason
+        rbody.velocity = new Vector3(-velocity.x,velocity.y,-velocity.z);
     }
 }
