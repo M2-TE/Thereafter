@@ -26,6 +26,13 @@ public class Teleportable : MonoBehaviour
         m_copy.SetActive(false);
     }
 
+    private void Update()
+    {
+        if(XRInput.Instance.GetTrigger(true))
+        {
+
+        }
+    }
 
     protected virtual void PortalProcedure()
     {

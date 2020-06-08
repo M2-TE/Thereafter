@@ -17,8 +17,8 @@ TagManager:
   - Portal
   - Teleportable
   - Head
-  - 
-  - 
+  - Walkable
+  - Obstacle
   - 
   - 
   - Interactable
