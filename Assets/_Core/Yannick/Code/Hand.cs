@@ -43,7 +43,7 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        //if (reachAble == null && other.GetComponent<Interactable>()) reachAble = other.GetComponent<Interactable>();
+        reachAble = reachAble == null ? other.GetComponent<Interactable>() : reachAble;
         reachAble.SetOutline(false);
         reachAble = null;
     }
