@@ -16,23 +16,36 @@ public class PickUpInteractable : Interactable
         rbody = GetComponent<Rigidbody>();
     }
 
-    public void PickUp(Transform holder)
+    /// <summary>
+    /// PickUp Event
+    /// </summary>
+    /// <param name="holder">The Hand the interactable will attach itself to.</param>
+    public override void EngageInteraction(Hand holder)
     {
         isPickedUp = true;
         OutlineOnHover = false;
 
-        transform.parent = holder;
+        transform.parent = holder.transform;
 
         rbody.isKinematic = true;
     }
 
-    public void DropDown()
+    /// <summary>
+    /// DropDown Event
+    /// </summary>
+    /// <param name="holder">The Hand the interactable will detach itself from.</param>
+    public override void DisengageInteraction(Hand holder)
     {
         isPickedUp = false;
         OutlineOnHover = true;
 
-        transform.parent = null;
+        transform.parent = InteractableManager.Instance.InteractablesParent;
 
         rbody.isKinematic = false;
+
+        Vector3 velocity = XRInput.Instance.GetControllerVelocity(holder.Left);
+
+        // the X and Z Velocity from the controllers are inverted for whatever reason
+        rbody.velocity = new Vector3(-velocity.x,velocity.y,-velocity.z);
     }
 }

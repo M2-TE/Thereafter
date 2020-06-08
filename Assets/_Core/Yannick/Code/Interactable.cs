@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Policy;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -36,4 +37,7 @@ public abstract class Interactable : MonoBehaviour
         else 
             meshRenderer.material.SetInt("_Outline", 0);
     }
+
+    public abstract void EngageInteraction(Hand interactor);
+    public abstract void DisengageInteraction(Hand interactor);
 }
