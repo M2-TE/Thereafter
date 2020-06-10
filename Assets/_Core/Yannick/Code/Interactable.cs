@@ -16,6 +16,7 @@ public abstract class Interactable : MonoBehaviour
 
     protected virtual void Start()
     {
+        propertyBlock = new MaterialPropertyBlock();
         InteractableManager.Instance.Add(this);
         gameObject.layer = InteractableManager.Instance.InteractableLayer;
         if (meshRenderer == null) meshRenderer = GetComponent<Renderer>();
