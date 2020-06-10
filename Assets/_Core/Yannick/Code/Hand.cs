@@ -43,9 +43,12 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        reachAble = reachAble == null ? other.GetComponent<Interactable>() : reachAble;
-        reachAble.SetOutline(false);
-        reachAble = null;
+        if(other.CompareTag("Interactable"))
+        {
+            reachAble = reachAble == null ? other.GetComponent<Interactable>() : reachAble;
+            reachAble.SetOutline(false);
+            reachAble = null;
+        }
     }
 
     /// <param name="engage">TRUE if the interaction has started. FALSE if it has ended.</param>
