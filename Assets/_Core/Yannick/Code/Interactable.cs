@@ -12,30 +12,33 @@ public abstract class Interactable : MonoBehaviour
     public bool OutlineOnHover = true;
     public bool Scannable = true;
 
-    private void Awake()
-    {
-        if(meshRenderer == null) meshRenderer = GetComponent<Renderer>();
-        meshRenderer.material = new Material(meshRenderer.material);
-    }
+    private MaterialPropertyBlock propertyBlock;
 
     protected virtual void Start()
     {
         InteractableManager.Instance.Add(this);
         gameObject.layer = InteractableManager.Instance.InteractableLayer;
+        if (meshRenderer == null) meshRenderer = GetComponent<Renderer>();
     }
 
     public void SetHighlight(bool active)
     {
-        if(Scannable)
-            meshRenderer.material.SetInt("_Highlight", active ? 1 : 0);
+        if (Scannable)
+        {
+            meshRenderer.GetPropertyBlock(propertyBlock);
+            propertyBlock.SetInt("_Highlight", active ? 1 : 0);
+            meshRenderer.SetPropertyBlock(propertyBlock);
+        }
     }
 
     public void SetOutline(bool active, bool ignoreOutlineOnHoverBool = false)
     {
+        meshRenderer.GetPropertyBlock(propertyBlock);
         if (ignoreOutlineOnHoverBool || OutlineOnHover)
-            meshRenderer.material.SetInt("_Outline", active ? 1 : 0);
+            propertyBlock.SetInt("_Outline", active ? 1 : 0);
         else 
-            meshRenderer.material.SetInt("_Outline", 0);
+            propertyBlock.SetInt("_Outline", 0);
+        meshRenderer.SetPropertyBlock(propertyBlock);
     }
 
     public abstract void EngageInteraction(Hand interactor);
