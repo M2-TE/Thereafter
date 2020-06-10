@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -71,7 +71,7 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-    m_MixedBakeMode: 2
+    m_MixedBakeMode: 1
     m_BakeBackend: 1
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
@@ -97,8 +97,9 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_LightingDataAsset: {fileID: 112000000, guid: 0062b054243de53419c5a43cd7884827,
+    type: 2}
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -226,7 +227,7 @@ GameObject:
   - component: {fileID: 682021125}
   - component: {fileID: 682021124}
   - component: {fileID: 682021123}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +425,7 @@ GameObject:
   - component: {fileID: 944650544}
   - component: {fileID: 944650543}
   - component: {fileID: 944650542}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -649,7 +650,7 @@ GameObject:
   - component: {fileID: 1448213718}
   - component: {fileID: 1448213717}
   - component: {fileID: 1448213716}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +812,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 3127
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -835,7 +836,7 @@ GameObject:
   - component: {fileID: 1658017577}
   - component: {fileID: 1658017576}
   - component: {fileID: 1658017575}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1009,6 +1010,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691689749}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1694098330 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8489702020041278255, guid: 2150a3f3bef78734588b223fa33d2564,
+    type: 3}
+  m_PrefabInstance: {fileID: 8489702020147586511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1694098333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694098330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2900400480dba404295e900578c9a411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1846383452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,6 +1121,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846383452}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1964623595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5017183959519016866, guid: 371f561e4f211904699dab06a2902f2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5017183959240709481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1964623602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964623595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d7e49944486dbf4e95252ac2c04740a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isLeftHand: 1
+  m_sphereScanRadius: 1
+  m_groundLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  m_obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1001 &2088719831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1317,6 +1362,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017183960189917255, guid: 371f561e4f211904699dab06a2902f2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5017183960189917273, guid: 371f561e4f211904699dab06a2902f2f,
         type: 3}
