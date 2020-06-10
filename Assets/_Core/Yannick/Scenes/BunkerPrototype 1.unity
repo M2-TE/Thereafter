@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 64254587011434752}
   - component: {fileID: 94868964}
   - component: {fileID: 94868963}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_CannedFood_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 64158879793586079}
   - component: {fileID: 176945489}
   - component: {fileID: 176945488}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Ammo_AssaultRifleMagazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -655,7 +655,7 @@ GameObject:
   - component: {fileID: 64996624589547198}
   - component: {fileID: 179967760}
   - component: {fileID: 179967759}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Rope (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 494804, guid: 7671ea9396147a74b92616bd74a736dc, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 494804, guid: 7671ea9396147a74b92616bd74a736dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -978,7 +978,7 @@ GameObject:
   - component: {fileID: 64899104823131604}
   - component: {fileID: 271393438}
   - component: {fileID: 271393437}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_MedicBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 464062, guid: 5fa2ed189d1850846b9cb9b016a71a82, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 464062, guid: 5fa2ed189d1850846b9cb9b016a71a82, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1201,7 +1201,7 @@ GameObject:
   - component: {fileID: 64744266038144698}
   - component: {fileID: 353310018}
   - component: {fileID: 353310017}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Candle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1220,7 +1220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1561482be3a7be4ca54163b698e62df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 355318786}
   OutlineOnHover: 1
   Scannable: 1
 --- !u!54 &353310018
@@ -1455,7 +1455,7 @@ GameObject:
   - component: {fileID: 64401134023686885}
   - component: {fileID: 415474101}
   - component: {fileID: 415474100}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Boxcutter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1689,7 +1689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 451388, guid: da8a4007de0f875418f54dce970bdd28, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 451388, guid: da8a4007de0f875418f54dce970bdd28, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1819,7 +1819,7 @@ GameObject:
   - component: {fileID: 64816960585602447}
   - component: {fileID: 470921047}
   - component: {fileID: 470921046}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_RoadFlareStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2170,7 +2170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 414748, guid: 48b79f1702180764097ddcb8650adccf, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 414748, guid: 48b79f1702180764097ddcb8650adccf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2267,7 +2267,7 @@ GameObject:
   - component: {fileID: 64816960346438118}
   - component: {fileID: 602866494}
   - component: {fileID: 602866493}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_RoadFlareStick (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2452,7 +2452,7 @@ GameObject:
   - component: {fileID: 64239090129475893}
   - component: {fileID: 611249483}
   - component: {fileID: 611249482}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Battery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2981,7 +2981,7 @@ GameObject:
   - component: {fileID: 64271695533683398}
   - component: {fileID: 724591206}
   - component: {fileID: 724591205}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_ToiletPaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3094,7 +3094,7 @@ GameObject:
   - component: {fileID: 64598783608905656}
   - component: {fileID: 745702310}
   - component: {fileID: 745702309}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_CanOpener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3721,7 +3721,7 @@ GameObject:
   - component: {fileID: 64252641023185590}
   - component: {fileID: 912225822}
   - component: {fileID: 912225821}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_WalkieTalkie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3911,7 +3911,7 @@ GameObject:
   - component: {fileID: 958298084}
   - component: {fileID: 959106244}
   - component: {fileID: 960174476}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_BearTrapEdge1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3932,7 +3932,7 @@ GameObject:
   - component: {fileID: 64649356510389180}
   - component: {fileID: 958031838}
   - component: {fileID: 958031837}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_BearTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3981,7 +3981,7 @@ GameObject:
   - component: {fileID: 958342330}
   - component: {fileID: 959159576}
   - component: {fileID: 960251278}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_BearTrapEdge2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4535,7 +4535,7 @@ GameObject:
   - component: {fileID: 64716763041043071}
   - component: {fileID: 1009923205}
   - component: {fileID: 1009923204}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Mousetrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4584,7 +4584,7 @@ GameObject:
   - component: {fileID: 1010200287}
   - component: {fileID: 1006830997}
   - component: {fileID: 1007993203}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_MousetrapCheese
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4661,7 +4661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 455140, guid: 6095854d7139a324da97fe2e31dd4e2c, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 455140, guid: 6095854d7139a324da97fe2e31dd4e2c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4697,7 +4697,7 @@ GameObject:
   - component: {fileID: 64652190113031511}
   - component: {fileID: 1015244575}
   - component: {fileID: 1015244574}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Lighter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5368,7 +5368,7 @@ GameObject:
   - component: {fileID: 64635345725740693}
   - component: {fileID: 1063271473}
   - component: {fileID: 1063271472}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Lantern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5495,7 +5495,7 @@ GameObject:
   - component: {fileID: 64704257494277875}
   - component: {fileID: 1069346313}
   - component: {fileID: 1069346312}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_CannedFood_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5749,7 +5749,7 @@ GameObject:
   - component: {fileID: 64816961971705031}
   - component: {fileID: 1116728863}
   - component: {fileID: 1116728862}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_RoadFlareStick (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6126,7 +6126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 405074, guid: a148d1ed254f8654db3935baac83e5c1, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 405074, guid: a148d1ed254f8654db3935baac83e5c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6191,7 +6191,7 @@ GameObject:
   - component: {fileID: 64716764398190360}
   - component: {fileID: 1289116134}
   - component: {fileID: 1289116133}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Mousetrap (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6240,7 +6240,7 @@ GameObject:
   - component: {fileID: 1288831928}
   - component: {fileID: 1290234098}
   - component: {fileID: 1290841108}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_MousetrapCheese
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6416,7 +6416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 416578, guid: 68a6a20c52308f946bae0234d1102f3f, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 416578, guid: 68a6a20c52308f946bae0234d1102f3f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6607,7 +6607,7 @@ GameObject:
   - component: {fileID: 64926866384583041}
   - component: {fileID: 1371282405}
   - component: {fileID: 1371282404}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Phonograph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6686,7 +6686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 427218, guid: ae88e64b00b8b6841aab3fd8966f8d99, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 427218, guid: ae88e64b00b8b6841aab3fd8966f8d99, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6700,6 +6700,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2371708, guid: ae88e64b00b8b6841aab3fd8966f8d99, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c5ac751d4489da4091802f6f72bb9c6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae88e64b00b8b6841aab3fd8966f8d99, type: 3}
 --- !u!4 &1409378079 stripped
@@ -6736,7 +6740,7 @@ GameObject:
   - component: {fileID: 64180220682985066}
   - component: {fileID: 1452135148}
   - component: {fileID: 1452135147}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_WaterBottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6862,7 +6866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 459248, guid: f04b9e465ffca514f9a05fdf253eb239, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 459248, guid: f04b9e465ffca514f9a05fdf253eb239, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6959,7 +6963,7 @@ GameObject:
   - component: {fileID: 64994287704419738}
   - component: {fileID: 1483049150}
   - component: {fileID: 1483049149}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Compass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7072,7 +7076,7 @@ GameObject:
   - component: {fileID: 64239090582616092}
   - component: {fileID: 1500286050}
   - component: {fileID: 1500286049}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Battery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7091,7 +7095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1561482be3a7be4ca54163b698e62df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 1498305208}
   OutlineOnHover: 1
   Scannable: 1
 --- !u!54 &1500286050
@@ -7185,7 +7189,7 @@ GameObject:
   - component: {fileID: 64576239998416909}
   - component: {fileID: 1526472963}
   - component: {fileID: 1526472962}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Ammo_Handgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7358,7 +7362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 431536, guid: b81d7e0e52523784cb01267ad33e5fb6, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 431536, guid: b81d7e0e52523784cb01267ad33e5fb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7421,7 +7425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 489390, guid: ab7de0089e8679e469f86f9d71b3df99, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 489390, guid: ab7de0089e8679e469f86f9d71b3df99, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7570,7 +7574,7 @@ GameObject:
   - component: {fileID: 64679045859602284}
   - component: {fileID: 1636264876}
   - component: {fileID: 1636264875}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7764,7 +7768,7 @@ GameObject:
   - component: {fileID: 64996623135465587}
   - component: {fileID: 1668190661}
   - component: {fileID: 1668190660}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8102,7 +8106,7 @@ GameObject:
   - component: {fileID: 64401132161013640}
   - component: {fileID: 1774816480}
   - component: {fileID: 1774816479}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Boxcutter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8121,7 +8125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1561482be3a7be4ca54163b698e62df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 1776859680}
   OutlineOnHover: 1
   Scannable: 1
 --- !u!54 &1774816480
@@ -8242,7 +8246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 446156, guid: 611ceb5c3229d3c488eb90bbd6e3c240, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 446156, guid: 611ceb5c3229d3c488eb90bbd6e3c240, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8397,7 +8401,7 @@ GameObject:
   - component: {fileID: 64146506667390203}
   - component: {fileID: 1976953155}
   - component: {fileID: 1976953154}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Whisky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8671,7 +8675,7 @@ GameObject:
   - component: {fileID: 64941027305868359}
   - component: {fileID: 2001775555}
   - component: {fileID: 2001775554}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_FishingRod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8878,7 +8882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 443716, guid: 2920f563725d6584b98fa67022d5309e, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 443716, guid: 2920f563725d6584b98fa67022d5309e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9055,7 +9059,7 @@ GameObject:
   - component: {fileID: 64533467405276518}
   - component: {fileID: 2074131186}
   - component: {fileID: 2074131185}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_CannedFood_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9211,7 +9215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 489596, guid: 07cc29e1173a6d248a1720121cc95d37, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 489596, guid: 07cc29e1173a6d248a1720121cc95d37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9308,7 +9312,7 @@ GameObject:
   - component: {fileID: 64464390125147757}
   - component: {fileID: 2113287515}
   - component: {fileID: 2113287514}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SA_Item_Airhorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9387,7 +9391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 418994, guid: eea241c4741862242b490597dd263352, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 418994, guid: eea241c4741862242b490597dd263352, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

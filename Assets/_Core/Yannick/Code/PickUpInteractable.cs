@@ -47,5 +47,6 @@ public class PickUpInteractable : Interactable
 
         // the X and Z Velocity from the controllers are inverted for whatever reason
         rbody.velocity = new Vector3(-velocity.x,velocity.y,-velocity.z);
+        Debug.Log(rbody.velocity.ToString());
     }
 }

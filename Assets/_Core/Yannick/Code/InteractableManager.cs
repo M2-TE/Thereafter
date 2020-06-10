@@ -22,8 +22,8 @@ public class InteractableManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z)) Scanner(true);
-        if (Input.GetKeyDown(KeyCode.U)) Scanner(false);
+        if (Input.GetKeyDown(KeyCode.Z) || XRInput.Instance.GetTrigger(true)) Scanner(true);
+        if (Input.GetKeyDown(KeyCode.U) || XRInput.Instance.GetTrigger(false)) Scanner(false);
     }
 
     public void Add(Interactable interactable)
