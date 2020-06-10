@@ -21,6 +21,10 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
+    - Boolean_53C8F0FA: 1
+    - Vector1_CB5CD059: 15
     - Vector1_D19B6B9D: 0.01
+    - _Fade: 0
     m_Colors:
     - Color_A0ED39A9: {r: 12.98113, g: 0.742801, b: 0.0612319, a: 0}
+    - Color_E4F92BCB: {r: 0.08290316, g: 0.21698111, b: 0.15622637, a: 1}
