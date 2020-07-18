@@ -30,6 +30,6 @@ Material:
     - Vector1_8DADD118: 0.59
     - Vector1_D65CF726: 0.1
     m_Colors:
-    - Color_6B0D3A1: {r: 33.988342, g: 9.729617, b: 4.969993, a: 0}
+    - Color_6B0D3A1: {r: 33.988342, g: 9.729617, b: 4.969993, a: 1}
     - Vector2_25A3B6E9: {r: 0, g: -0.3, b: 0, a: 0}
     - Vector2_2B399FB9: {r: -0.1, g: -0.5, b: 0, a: 0}

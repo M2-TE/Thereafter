@@ -1,0 +1,8 @@
+newmtl Hands
+Kd 1 1 1
+d 1
+
+newmtl ProBuilder_Default_URP
+Kd 1.0 1.0 1.0
+d 1.0
+
