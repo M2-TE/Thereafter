@@ -85,44 +85,62 @@ public class PlayerController : MonoBehaviour
 
     private bool m_IsTeleportGoalValid;
     private Vector3 m_TempTeleportGoalPos;
+    [SerializeField] private Material m_LineRendererValidMat;
+    [SerializeField] private Material m_LineRendererInvalidMat;
     private void FixedUpdate()
     {
         if(!m_IsDirectionallyControlled)
         {
-            // left trigger
-            if (m_Input.GetTrigger(true) 
-                && Physics.Raycast(
-                    new Ray(m_Controllers[0].position, m_Controllers[0].forward), 
-                    out RaycastHit hit, 50f, m_CollidingLayers))
+            if (m_Input.GetTrigger(true))
             {
-                if(NavMesh.SamplePosition(hit.point, out _, .1f, NavMesh.AllAreas))
-                {
-                    m_IsTeleportGoalValid = true;
-                    m_TempTeleportGoalPos = hit.point;
-
-                    m_LineRenderer.SetPositions(new Vector3[] { m_Controllers[0].position, hit.point });
-                    m_LineRenderer.enabled = true;
-                }
-                else
-                {
-                    m_IsTeleportGoalValid = false;
-
-                    m_LineRenderer.enabled = false;
-                }
+                m_IsTeleportGoalValid = CheckTeleportTargetPos(m_Controllers[0].position, m_Controllers[0].forward, out Vector3 targetPos);
+                if(m_IsTeleportGoalValid)  m_TempTeleportGoalPos = targetPos;
+            }
+            else if (m_Input.GetTrigger(false))
+            {
+                m_IsTeleportGoalValid = CheckTeleportTargetPos(m_Controllers[1].position, m_Controllers[1].forward, out Vector3 targetPos);
+                if (m_IsTeleportGoalValid) m_TempTeleportGoalPos = targetPos;
             }
             else
             {
-                // disable teleport line renderer
                 m_LineRenderer.enabled = false;
-
-                // teleport to selected position if its valid
                 if (m_IsTeleportGoalValid)
                 {
-                    Debug.Log("REEEEEE");
-                    transform.position = m_TempTeleportGoalPos;
                     m_IsTeleportGoalValid = false;
+                    transform.position = m_TempTeleportGoalPos;
                 }
             }
+        }
+    }
+
+    private bool CheckTeleportTargetPos(Vector3 start, Vector3 dir, out Vector3 targetPos)
+    {
+        targetPos = Vector3.zero;
+        if(Physics.Raycast(new Ray(start, dir), out RaycastHit hit, 10f, m_CollidingLayers))
+        {
+            m_LineRenderer.enabled = true;
+
+            // check if target pos is valid on the nav mesh 
+            // (if target pos can be stood on by player)
+            bool isInNavMesh = NavMesh.SamplePosition(hit.point, out _, .1f, NavMesh.AllAreas);
+            m_LineRenderer.SetPositions(new Vector3[] { start, hit.point });
+
+            if (isInNavMesh)
+            {
+                targetPos = hit.point;
+                m_LineRenderer.material = m_LineRendererValidMat;
+                return true;
+            }
+            else
+            {
+                m_LineRenderer.material = m_LineRendererInvalidMat;
+                return false;
+            }
+        }
+        else
+        {
+            m_LineRenderer.enabled = false;
+            return false;
         }
     }
 
