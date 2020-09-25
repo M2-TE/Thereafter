@@ -100,6 +100,30 @@ public class Portal : MonoBehaviour
         target.Rotate(new Vector3(0f, 0f, original.rotation.eulerAngles.z));
     }
 
+    // point = point of intersection with portal
+    public Ray GetMirroredRay(Vector3 point, Vector3 dir)
+    {
+        Ray ray = new Ray();
+
+        // get new start point
+        {
+            var relativePosition = transform.InverseTransformPoint(point);
+            relativePosition = Vector3.Scale(relativePosition, new Vector3(-1, 1, -1));
+            ray.origin = m_Pair.transform.TransformPoint(relativePosition);
+        }
+
+        // rotate dir vector
+        {
+            var relativeRotation = transform.InverseTransformDirection(dir);
+            relativeRotation = Vector3.Scale(relativeRotation, new Vector3(-1, 1, -1));
+            ray.direction = m_Pair.transform.TransformDirection(relativeRotation);
+            // z adjustment
+            ray.direction = Quaternion.Euler(0f, 0f, dir.z) * ray.direction;
+        }
+
+        return ray;
+    }
+
     private void OnBeforeRender()
     {
         // render manually

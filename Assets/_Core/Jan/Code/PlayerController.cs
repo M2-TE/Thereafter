@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform[] m_Controllers;
     [SerializeField] private Teleportable[] teleportables;
     [SerializeField] private LineRenderer m_LineRenderer;
+    [SerializeField] private LineRenderer m_LineRendererDupe;
 
     [Header("Movement")]
     [SerializeField] private float m_Movespeed = .05f;
@@ -113,33 +114,53 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private bool CheckTeleportTargetPos(Vector3 start, Vector3 dir, out Vector3 targetPos)
+    private bool CheckTeleportTargetPos(Vector3 start, Vector3 dir, out Vector3 targetPos, LineRenderer lineRenderer = null)
     {
+        if(lineRenderer == null)
+        {
+            lineRenderer = m_LineRenderer;
+        }
+
         targetPos = Vector3.zero;
         if(Physics.Raycast(new Ray(start, dir), out RaycastHit hit, 10f, m_CollidingLayers))
         {
-            m_LineRenderer.enabled = true;
+            lineRenderer.enabled = true;
 
-            // check if target pos is valid on the nav mesh 
-            // (if target pos can be stood on by player)
-            bool isInNavMesh = NavMesh.SamplePosition(hit.point, out _, .1f, NavMesh.AllAreas);
-            m_LineRenderer.SetPositions(new Vector3[] { start, hit.point });
+            // teleporter was hit
+            if (hit.collider.CompareTag("Portal"))
+            {
+                lineRenderer.SetPositions(new Vector3[] { start, hit.point });
 
-            if (isInNavMesh)
-            {
-                targetPos = hit.point;
-                m_LineRenderer.material = m_LineRendererValidMat;
-                return true;
+                var portal = hit.transform.GetComponent<Portal>();
+                var ray = portal.GetMirroredRay(hit.point, dir);
+                Debug.Log(ray);
+
+                return CheckTeleportTargetPos(ray.origin, ray.direction, out targetPos, m_LineRendererDupe);
             }
-            else
+            else // ground/other was hit
             {
-                m_LineRenderer.material = m_LineRendererInvalidMat;
-                return false;
+                // check if target pos is valid on the nav mesh 
+                // (if target pos can be stood on by player)
+                bool isInNavMesh = NavMesh.SamplePosition(hit.point, out _, .1f, NavMesh.AllAreas);
+                lineRenderer.SetPositions(new Vector3[] { start, hit.point });
+
+                if (isInNavMesh)
+                {
+                    targetPos = hit.point;
+                    lineRenderer.material = m_LineRendererValidMat;
+                    return true;
+                }
+                else
+                {
+                    lineRenderer.material = m_LineRendererInvalidMat;
+                    return false;
+                }
             }
+
         }
         else
         {
-            m_LineRenderer.enabled = false;
+            lineRenderer.enabled = false;
             return false;
         }
     }
