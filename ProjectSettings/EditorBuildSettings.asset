@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Core/Yannick/Scenes/Intro Scene.unity
+    guid: 0b54bfcc59466d94fbb866292faed7d1
+  - enabled: 1
     path: Assets/_Core/_Scenes/Bunker.unity
     guid: cc06304e4af973549ba72bf253db4ead
   m_configObjects:

@@ -6,6 +6,7 @@ using UnityEngine.SpatialTracking;
 [DefaultExecutionOrder(-30005)]
 public class PlayerController : MonoBehaviour
 {
+    
     [SerializeField] private bool m_IsMouseControlled;
     [SerializeField] private bool m_IsDirectionallyControlled;
     [Header("Trackers and Cams")]
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LineRenderer m_LineRendererDupe;
 
     [Header("Movement")]
+    [SerializeField] private CameraCullingManager m_Culling;
     [SerializeField] private float m_Movespeed = .05f;
     [SerializeField] private float m_MouseLookSpeed = 1f;
 
@@ -87,6 +89,10 @@ public class PlayerController : MonoBehaviour
     private bool m_IsTeleportGoalValid;
     private string m_TargetObjectTag = "";
     private Vector3 m_TempTeleportGoalPos;
+    [SerializeField] private AudioSource m_HologramAudio;
+    [SerializeField] private AudioSource m_OwnAudio;
+    [SerializeField] private AudioClip m_MissionMessage;
+    [SerializeField] private AudioClip m_MissionCompleteMessage;
     [SerializeField] private Material m_LineRendererValidMat;
     [SerializeField] private Material m_LineRendererInvalidMat;
     [SerializeField] private Material m_LineRendererStatueMat;
@@ -114,7 +120,22 @@ public class PlayerController : MonoBehaviour
             switch (m_TargetObjectTag)
             {
                 case "BrokenStatue":
-                    Debug.Log("TRIGGER ENDING SEQUENCE");
+                    m_OwnAudio.PlayOneShot(m_MissionCompleteMessage);
+                    StartCoroutine(m_Culling.LoadSceneOnTarget(0, 4f));
+                    break;
+
+                case "BunkerEntry":
+                    StartCoroutine(m_Culling.LoadSceneOnTarget(1));
+                    break;
+
+                case "BunkerExit":
+                    //StartCoroutine(m_Culling.LoadSceneOnTarget(0));
+                    break;
+
+                case "Hologram":
+                    m_HologramAudio.Stop();
+                    m_HologramAudio.loop = false;
+                    m_HologramAudio.PlayOneShot(m_MissionMessage);
                     break;
 
             }
@@ -138,7 +159,7 @@ public class PlayerController : MonoBehaviour
             if (!hit.collider.CompareTag("Untagged"))
             {
                 m_TargetObjectTag = hit.collider.tag;
-                lineRenderer.material = m_LineRendererValidMat;
+                lineRenderer.material = m_LineRendererStatueMat;
                 return false;
             }
             else

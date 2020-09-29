@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraCullingManager : MonoBehaviour
 {
@@ -26,5 +26,20 @@ public class CameraCullingManager : MonoBehaviour
         {
             mainCam.farClipPlane = Mathf.Max(mainCam.farClipPlane - Time.deltaTime * speed,minDistance);
         }
+    }
+
+
+    public IEnumerator LoadSceneOnTarget(int sceneID, float delay = 0f)
+    {
+        yield return new WaitForSeconds(delay);
+
+        increaseCulling = false;
+        while (mainCam.farClipPlane < .1f)
+        {
+            yield return null;
+        }
+
+        SceneManager.LoadScene(sceneID);
+        yield return null;
     }
 }

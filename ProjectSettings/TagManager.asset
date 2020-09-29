@@ -9,6 +9,7 @@ TagManager:
   - BrokenStatue
   - BunkerEntry
   - BunkerExit
+  - Hologram
   layers:
   - Default
   - TransparentFX
