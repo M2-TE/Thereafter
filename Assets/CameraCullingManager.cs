@@ -18,7 +18,7 @@ public class CameraCullingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (increaseCulling && mainCam.farClipPlane >= maxDistance)
+        if (increaseCulling && mainCam.farClipPlane <= maxDistance)
         {
             mainCam.farClipPlane = Mathf.Min(mainCam.farClipPlane + Time.deltaTime * speed, maxDistance);
         }
