@@ -114,14 +114,14 @@ public class PlayerController : MonoBehaviour
             if (m_IsTeleportGoalValid)
             {
                 m_IsTeleportGoalValid = false;
-                transform.position = m_TempTeleportGoalPos + new Vector3(0f, .5f, 0f);
+                transform.position = m_TempTeleportGoalPos;
             }
 
             switch (m_TargetObjectTag)
             {
                 case "BrokenStatue":
                     m_OwnAudio.PlayOneShot(m_MissionCompleteMessage);
-                    StartCoroutine(m_Culling.LoadSceneOnTarget(0, 4f));
+                    StartCoroutine(m_Culling.LoadSceneOnTarget(2, 4f));
                     break;
 
                 case "BunkerEntry":

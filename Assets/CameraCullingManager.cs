@@ -39,7 +39,7 @@ public class CameraCullingManager : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene(sceneID);
-        yield return null;
+        var asyncLoad = SceneManager.LoadSceneAsync(sceneID);
+        asyncLoad.allowSceneActivation = true;
     }
 }

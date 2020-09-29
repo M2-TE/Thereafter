@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Core/_Scenes/Bunker.unity
     guid: cc06304e4af973549ba72bf253db4ead
+  - enabled: 1
+    path: Assets/_Core/Yannick/Scenes/Credits Scene.unity
+    guid: 812f8ff5414f7a442816bd7a457dd2d6
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4158e6f2ee5b5b1419f446307bc2f1ac,
       type: 2}
