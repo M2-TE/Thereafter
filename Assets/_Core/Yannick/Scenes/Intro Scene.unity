@@ -5092,6 +5092,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Low Poly Hand
       objectReference: {fileID: 0}
+    - target: {fileID: 1761681270787517020, guid: eaf7b13474f76a743a9390053952544c,
+        type: 3}
+      propertyPath: m_LineRendererValidMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 651c800fc67a74d4d99d92ddf05ef232, type: 2}
+    - target: {fileID: 1761681270787517020, guid: eaf7b13474f76a743a9390053952544c,
+        type: 3}
+      propertyPath: m_LineRendererInvalidMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 3328394a192eed24081b34ef8b02868d, type: 2}
     - target: {fileID: 1761681270787517021, guid: eaf7b13474f76a743a9390053952544c,
         type: 3}
       propertyPath: m_LocalPosition.x
