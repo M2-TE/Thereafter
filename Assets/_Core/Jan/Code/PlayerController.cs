@@ -85,32 +85,40 @@ public class PlayerController : MonoBehaviour
     }
 
     private bool m_IsTeleportGoalValid;
+    private string m_TargetObjectTag = "";
     private Vector3 m_TempTeleportGoalPos;
     [SerializeField] private Material m_LineRendererValidMat;
     [SerializeField] private Material m_LineRendererInvalidMat;
+    [SerializeField] private Material m_LineRendererStatueMat;
     private void FixedUpdate()
     {
-        if(!m_IsDirectionallyControlled)
+        if (m_Input.GetTrigger(true))
         {
-            if (m_Input.GetTrigger(true))
+            m_IsTeleportGoalValid = CheckTeleportTargetPos(m_Controllers[0].position, m_Controllers[0].forward, out Vector3 targetPos);
+            if (m_IsTeleportGoalValid) m_TempTeleportGoalPos = targetPos;
+        }
+        else if (m_Input.GetTrigger(false))
+        {
+            m_IsTeleportGoalValid = CheckTeleportTargetPos(m_Controllers[1].position, m_Controllers[1].forward, out Vector3 targetPos);
+            if (m_IsTeleportGoalValid) m_TempTeleportGoalPos = targetPos;
+        }
+        else
+        {
+            m_LineRenderer.enabled = false;
+            if (m_IsTeleportGoalValid)
             {
-                m_IsTeleportGoalValid = CheckTeleportTargetPos(m_Controllers[0].position, m_Controllers[0].forward, out Vector3 targetPos);
-                if(m_IsTeleportGoalValid)  m_TempTeleportGoalPos = targetPos;
+                m_IsTeleportGoalValid = false;
+                transform.position = m_TempTeleportGoalPos + new Vector3(0f, .5f, 0f);
             }
-            else if (m_Input.GetTrigger(false))
+
+            switch (m_TargetObjectTag)
             {
-                m_IsTeleportGoalValid = CheckTeleportTargetPos(m_Controllers[1].position, m_Controllers[1].forward, out Vector3 targetPos);
-                if (m_IsTeleportGoalValid) m_TempTeleportGoalPos = targetPos;
+                case "BrokenStatue":
+                    Debug.Log("TRIGGER ENDING SEQUENCE");
+                    break;
+
             }
-            else
-            {
-                m_LineRenderer.enabled = false;
-                if (m_IsTeleportGoalValid)
-                {
-                    m_IsTeleportGoalValid = false;
-                    transform.position = m_TempTeleportGoalPos;
-                }
-            }
+            m_TargetObjectTag = "";
         }
     }
 
@@ -122,28 +130,23 @@ public class PlayerController : MonoBehaviour
         }
 
         targetPos = Vector3.zero;
-        if(Physics.Raycast(new Ray(start, dir), out RaycastHit hit, 10f, m_CollidingLayers))
+        if(Physics.Raycast(new Ray(start, dir), out RaycastHit hit, 20f, m_CollidingLayers))
         {
             lineRenderer.enabled = true;
+            lineRenderer.SetPositions(new Vector3[] { start + dir * .1f, hit.point });
 
-            // teleporter was hit
-            if (hit.collider.CompareTag("Portal"))
+            if (!hit.collider.CompareTag("Untagged"))
             {
-                lineRenderer.SetPositions(new Vector3[] { start, hit.point });
-
-                var portal = hit.transform.GetComponent<Portal>();
-                var ray = portal.GetMirroredRay(hit.point, dir);
-                Debug.Log(ray);
-
-                return CheckTeleportTargetPos(ray.origin, ray.direction, out targetPos, m_LineRendererDupe);
+                m_TargetObjectTag = hit.collider.tag;
+                lineRenderer.material = m_LineRendererValidMat;
+                return false;
             }
-            else // ground/other was hit
+            else
             {
+                m_TargetObjectTag = "";
                 // check if target pos is valid on the nav mesh 
                 // (if target pos can be stood on by player)
                 bool isInNavMesh = NavMesh.SamplePosition(hit.point, out _, .1f, NavMesh.AllAreas);
-                lineRenderer.SetPositions(new Vector3[] { start, hit.point });
-
                 if (isInNavMesh)
                 {
                     targetPos = hit.point;
@@ -155,6 +158,21 @@ public class PlayerController : MonoBehaviour
                     lineRenderer.material = m_LineRendererInvalidMat;
                     return false;
                 }
+                //// teleporter was hit
+                //if (hit.collider.CompareTag("Portal"))
+                //{
+                //    lineRenderer.SetPositions(new Vector3[] { start, hit.point });
+
+                //    var portal = hit.transform.GetComponent<Portal>();
+                //    var ray = portal.GetMirroredRay(hit.point, dir);
+                //    //Debug.Log(ray);
+
+                //    return CheckTeleportTargetPos(ray.origin, ray.direction, out targetPos, m_LineRendererDupe);
+                //}
+                //else // ground/other was hit
+                //{
+
+                //}
             }
 
         }
